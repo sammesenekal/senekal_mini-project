@@ -20,6 +20,8 @@ Write the abstract for your mini-project here!
 
 -   All scripts responsible for producing figures and processed data sets can be found in the 'scripts' folder
 
+-   All figures can be found in 'figs' folder
+
 **Requirements/Data-Specific information**
 
 -   R version 4.5.2
