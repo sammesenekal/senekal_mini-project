@@ -53,3 +53,28 @@ half_life_results <- theoph_elimination %>%
 # View the final table
 print(half_life_results)
 
+#Create new CSV file for the half-life results
+
+readr::write_csv(half_life_results, here::here("data", "data_processed","half_life_results"))
+
+#Make a figs folder to hold graphics for manuscript
+
+dir.create("figs")
+
+#Read back in the half_life_results.csv
+
+readr::read_csv(here::here("data","data_processed","half_life_results"))
+
+#View
+
+View(half_life_results)
+
+#I only want the table to show Subject, Kel, and Half-life
+
+final_table <- half_life_results %>%
+  select(Subject, Kel, Half_Life)
+
+View(final_table)
+
+#Save final_table data as new CSV
+
