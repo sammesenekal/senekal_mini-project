@@ -55,7 +55,7 @@ print(half_life_results)
 
 #Create new CSV file for the half-life results
 
-readr::write_csv(half_life_results, here::here("data", "data_processed","half_life_results"))
+readr::write_csv(half_life_results, here::here("data", "data_processed","half_life_results.csv"))
 
 #Make a figs folder to hold graphics for manuscript
 
@@ -63,7 +63,7 @@ dir.create("figs")
 
 #Read back in the half_life_results.csv
 
-readr::read_csv(here::here("data","data_processed","half_life_results"))
+readr::read_csv(here::here("data","data_processed","half_life_results.csv"))
 
 #View
 
