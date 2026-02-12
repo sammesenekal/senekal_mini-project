@@ -11,6 +11,8 @@ csl: apa.csl
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+#Introduction 
+
 Start with a definition of theophylline and what it is used for (make a citation here). Introduce pharmacokinetics ([@barnes2010]).
 
 Talk about why the pharmacokinetics of this drug are important and what your little manuscript will show about theophylline. This manuscript will be determining the half-life of theophylline.
