@@ -23,7 +23,7 @@ wt_hl_plot <- ggplot(data = theoph_wthf, aes(x= Wt, y = Half_Life)) +
 
 print(wt_hl_plot)
 
-#We need a test to show that this trendlind is statistically significant
+#We need a test to show if this trend line is statistically significant
 ##Simple Linear Regression--this will predict if weight significantly predicts Half-life
 
 stat_model <- lm(Half_Life~Wt, data = theoph_wthf)
