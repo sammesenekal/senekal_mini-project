@@ -10,7 +10,12 @@ readr::write_csv(Theoph, here::here("data", "data_raw", "Theoph.csv"))
 
 my_Theoph <- readr::read_csv(here::here("data","data_raw","Theoph.csv"))
 
-#Now I will select for the variables I want to analyse 
+#I will look at the dataset to see what variables I would like to isolate to calculate half-life
+str(Theoph)
+
+##From this I can see that there is subject, weight (Wt), Dose, Time, and concentration (conc). To calculate half-life I only need Subject, Time, and Concentration.
+
+#Now I will select for the Subject, Time, and Concentation
 
 my_Theoph_threevar <- my_Theoph |>
   select(Subject, conc, Time)
@@ -18,4 +23,5 @@ my_Theoph_threevar <- my_Theoph |>
 #Finally, I will produced a processed data CSV file containing only the variables of interest
 
 readr::write_csv(my_Theoph_threevar, here::here("data", "data_processed", "Theoph_threevar.csv"))
+
                  

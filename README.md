@@ -1,8 +1,8 @@
-# Theophylline concentration declines in a time-dependent manner
+# Theophylline half-life depends on patient weight
 
 Code and data for my *Mini-project* assignment for BIOL_530H (Scientific Reproducibility)
 
-**Theophylline concentration declines in a time-dependent manner**
+**Theophylline half-life depends on patient weight**
 
 By [Samme Senekal]
 

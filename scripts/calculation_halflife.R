@@ -1,5 +1,7 @@
 # Using the processed data, I will log (ln) transform the concentration data for use in half-life analysis, but first I will read in the processed data
 
+library(here)
+
 theoph_three <- readr::read_csv(here::here("data","data_processed","Theoph_threevar.csv"))
 
 #Then, I will ln transform the concentration into the data frame as a new column
@@ -14,13 +16,15 @@ theoph_elimination <- subset(theoph_three, Time > 10)
 
 head(theoph_elimination[, c("Subject","Time","conc","ln_conc" )])
 
-#Load ggplot2
+#Load ggplot2 and tidyr
 
 library(ggplot2)
+library(tidyr)
+library(tidyverse)
 
 #Produce a graph where you can see the kinetics for each subject differs
 
-ggplot(data= theoph_elimination, aes(x = Time, y = ln_conc)) +
+Elimination_Kinetics <- ggplot(data= theoph_elimination, aes(x = Time, y = ln_conc)) +
   geom_point(colour = "blue", size = 2) +
   geom_smooth(method = "lm", se = FALSE, colour = "red") +
   #Need a separate graph for each subject
@@ -31,6 +35,8 @@ ggplot(data= theoph_elimination, aes(x = Time, y = ln_conc)) +
   ) +
   theme_minimal()
 
+print(Elimination_Kinetics)
+
 #Calculating Half-life for each patient
 
 library(dplyr)
@@ -39,7 +45,7 @@ library(dplyr)
 half_life_results <- theoph_elimination %>%
   group_by(Subject) %>%
   summarise(
-    # Extract the slope (coefficient for Time) from the linear model
+    # Extract the slope from the linear model
     Slope = coef(lm(ln_conc ~ Time))[2],
     
     # Calculate Kel (Elimination Rate Constant)
@@ -61,6 +67,15 @@ readr::write_csv(half_life_results, here::here("data", "data_processed","half_li
 
 dir.create("figs")
 
+ggsave(
+  filename = here::here("figs", "elimination_curves.png"),
+  plot = Elimination_Kinetics,
+  width = 8,
+  height = 6,
+  units = "in",
+  dpi = 300
+  )
+
 #Read back in the half_life_results.csv
 
 readr::read_csv(here::here("data","data_processed","half_life_results.csv"))
@@ -69,12 +84,25 @@ readr::read_csv(here::here("data","data_processed","half_life_results.csv"))
 
 View(half_life_results)
 
-#I only want the table to show Subject, Kel, and Half-life
+#In order to see the correlation between patient weight and half-life, I will need to make another data subset with the variables Subject, Weight (Wt), and Half-Life
+##Weight is in the Theoph.csv Raw data file
 
-final_table <- half_life_results %>%
-  select(Subject, Kel, Half_Life)
+read.csv(here::here("data", "data_raw", "Theoph.csv"))
 
-View(final_table)
+#I will extract subject and weight from the raw data file:
 
+raw_weights <- Theoph %>%
+  select(Subject, Wt) %>%
+  mutate(Subject = as.numeric(as.character(Subject))) %>%
+  unique()
 
+#And then combine it with the half_life_results file based on Subject
 
+combined_data <- half_life_results %>%
+  left_join(raw_weights, by = "Subject") %>%
+  select(Subject, Wt, Half_Life)
+
+str(combined_data)
+
+write.csv(combined_data, 
+          here::here("data","data_processed","Theoph_wthl.csv"))
