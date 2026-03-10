@@ -1,8 +1,8 @@
-# Theophylline half-life depends on patient weight
+# Total Body Weight is Not a Significant Predictor of Theophylline Elimination Half-Life: A Retrospective Analysis
 
 Code and data for my *Mini-project* assignment for BIOL_530H (Scientific Reproducibility)
 
-**Theophylline half-life depends on patient weight**
+**Total Body Weight is Not a Significant Predictor of Theophylline Elimination Half-Life: A Retrospective Analysis**
 
 By [Samme Senekal]
 
