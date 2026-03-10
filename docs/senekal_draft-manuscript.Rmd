@@ -2,7 +2,7 @@
 title: "Total Body Weight is Not a Significant Predictor of Theophylline Elimination Half-Life: A Retrospective Analysis"
 author: "Samme Senekal"
 date: "2026-02-06"
-output: pdf_document
+output: bookdown::pdf_document2
 bibliography: references.bib
 csl: apa.csl
 ---
@@ -13,17 +13,17 @@ knitr::opts_chunk$set(echo = TRUE)
 
 #Introduction
 
-Although theophylline has been used as a bronchodilator to treat airway diseases for decades, its clinical utility is limited by a narrow therapeutic index where the required dosages frequently cause side effects ranging from nausea, vomiting, and headaches to more serious complications like cardiac arrhythmias and seizures ([@barnes2010]; [@hendeles1980]; [@journey2026]). Understanding how theophylline is eliminated from the body is important for balancing these side effects with therapeutic benefits, as side effects are directly related to theophylline plasma concentration ([@barnes2010], [@stavric1988]). Elimination half-life is a crucial pharmacokinetic measure that defines how long it takes for a drug’s plasma concentration to decrease by half, a rate that can vary dramatically among individual patients ([@cheymol2000]; [@hendeles1980]).
+Although theophylline has been used as a bronchodilator to treat airway diseases for decades, its clinical utility is limited by a narrow therapeutic index where the required dosages frequently cause side effects ranging from nausea, vomiting, and headaches to more serious complications like cardiac arrhythmias and seizures ([@barnes2010]; [@hendeles1980]; [@journey2026]). Understanding how theophylline is eliminated from the body is important for balancing these side effects with therapeutic benefits, as side effects are directly related to theophylline plasma concentration ([@barnes2010]; [@stavric1988]). Elimination half-life is a crucial pharmacokinetic measure that defines how long it takes for a drug’s plasma concentration to decrease by half, a rate that can vary dramatically among individual patients ([@cheymol2000]; [@hendeles1980]).
 
-Individual differences in the clearance of theophylline can be attributed to factors that influence hepatic metabolism such as smoking, liver disease, old age, and certain dietary choices ([@barnes2010]). However, it is unclear whether patient specific metrics like total body weight influence elimination half-life of theophylline. It is logically assumed that an increase in body mass may alter theophylline’s volume of distribution or its clearance rate, thereby impacting its half-life.
+Individual differences in the clearance of theophylline can be attributed to factors that influence hepatic metabolism such as smoking, liver disease, old age, and certain dietary choices [@barnes2010]. However, it is unclear whether patient specific metrics like total body weight influence elimination half-life of theophylline. It is logically assumed that an increase in body mass may alter theophylline’s volume of distribution or its clearance rate, thereby impacting its half-life.
 
-Therefore, the purpose of this retrospective analysis is to evaluate the relationship between patient body weight and theophylline elimination half-life using the publicly available Theoph dataset ([@boeckmann1994]). I tested the null hypothesis that there is no linear relationship between a patient’s total body weight and their theophylline elimination half-life, against the alternative hypothesis that a significant linear relationship exists.
+Therefore, the purpose of this retrospective analysis is to evaluate the relationship between patient body weight and theophylline elimination half-life using the publicly available Theoph dataset [@boeckmann1994]. I tested the null hypothesis that there is no linear relationship between a patient’s total body weight and their theophylline elimination half-life, against the alternative hypothesis that a significant linear relationship exists.
 
 #Methods
 
-A retrospective, secondary analysis was conducted using the publicly available Theoph dataset in R Studio ([@boeckmann1994]). The original data was collected by Dr. Rober Upton around 1980 and contains pharmacokinetic data from N = 12 subjects who received a single oral dose of theophylline. Unfortunately, it is unclear if Dr. Upton published this data as the original manuscript could not be located.
+A retrospective, secondary analysis was conducted using the publicly available Theoph dataset in R Studio [@boeckmann1994]. The original data was collected by Dr. Rober Upton around 1980 and contains pharmacokinetic data from N = 12 subjects who received a single oral dose of theophylline. Unfortunately, it is unclear if Dr. Upton published this data as the original manuscript could not be located.
 
-The predictor variable was patient body weight (kg), and the primary outcome measure was the theophylline elimination half-life (hours). To derive the half-life for each subject, concentration data from the initial absorption phase were excluded to isolate the elimination phase. The remaining theophylline concentrations were log-transformed (ln(conc)) to linearize the elimination phase. The elimination rate constant (Kel) was derived by calculating the absolute value of the slope from a simple linear regression of log-concentration plotted against time for each individual subject (Figure S1). The elimination half-life (t1/2) was calculated using the standard pharmacokinetic formula: $$t_{1/2} = \frac{\ln(2)}{K_{el}}$$
+The predictor variable was patient body weight (kg), and the primary outcome measure was the theophylline elimination half-life (hours). To derive the half-life for each subject, concentration data from the initial absorption phase were excluded to isolate the elimination phase. The remaining theophylline concentrations were log-transformed (ln(conc)) to linearize the elimination phase. The elimination rate constant (Kel) was derived by calculating the absolute value of the slope from a simple linear regression of log-concentration plotted against time for each individual subject (Figure \@ref(fig:supp-fig-1)). The elimination half-life (t1/2) was calculated using the standard pharmacokinetic formula: $$t_{1/2} = \frac{\ln(2)}{K_{el}}$$
 
 To test the hypothesis that patient body weight correlates with elimination half-life of theophylline, a simple linear regression (Ordinary Least Squares) model was used. All data processing, subsetting, and statistical analyses were conducted in RStudio. The threshold for statistical significance was set at $\alpha$ = 0.05.
 
@@ -46,10 +46,15 @@ Data and code are publicly available in the GitHub repository for this project (
 
 The pre-registration and data management plan are available on the OSF for this project (<https://osf.io/as843/overview?view_only=0386ce0964aa458194d05509746b3df0>)
 
+#References
+
 ::: {#refs}
 :::
 
 #Supplementary Materials
+
+\renewcommand{\thefigure}{S\arabic{figure}}
+\setcounter{figure}{0}
 
 ```{r supp-fig-1, echo=FALSE, fig.cap="Individual theophylline log-concentration time curves for subjects 1-12. The blue dots represent the individual blood concentration measurements taken for each person during the elimination phase. The red solid lines represent the terminal elimination phase used for the calculation of the elimination rate constant($K_{el}$)."}
 knitr::include_graphics(here::here("figs", "elimination_curves.png"))
