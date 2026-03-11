@@ -28,7 +28,7 @@ Therefore, the purpose of this retrospective analysis is to evaluate the relatio
 
 A retrospective, secondary analysis was conducted using the publicly available Theoph dataset in R Studio [@boeckmann1994]. The original data was collected by Dr. Robert Upton around 1980 and contains pharmacokinetic data from N = 12 subjects who received a single oral dose of theophylline. Unfortunately, it is unclear if Dr. Upton published this data as the original manuscript could not be located.
 
-The predictor variable was patient body weight (kg), and the primary outcome measure was the theophylline elimination half-life (hours). To derive the half-life for each subject, concentration data from the initial absorption phase were excluded to isolate the elimination phase. The remaining theophylline concentrations were log-transformed (ln(conc)) to linearize the elimination phase. The elimination rate constant (K_{el}) was derived by calculating the absolute value of the slope from a simple linear regression of log-concentration plotted against time for each individual subject (Figure \@ref(fig:supp-fig-1)). The elimination half-life (t1/2) was calculated using the standard pharmacokinetic formula: $$t_{1/2} = \frac{\ln(2)}{K_{el}}$$
+The predictor variable was patient body weight (kg), and the primary outcome measure was the theophylline elimination half-life (hours). To derive the half-life for each subject, concentration data from the initial absorption phase were excluded to isolate the elimination phase. The remaining theophylline concentrations were log-transformed (ln(conc)) to linearize the elimination phase. The elimination rate constant ($K_{el}$) was derived by calculating the absolute value of the slope from a simple linear regression of log-concentration plotted against time for each individual subject (Figure \@ref(fig:supp-fig-1)). The elimination half-life ($t_{1/2}$) was calculated using the standard pharmacokinetic formula: $$t_{1/2} = \frac{\ln(2)}{K_{el}}$$
 
 To test the hypothesis that patient body weight correlates with elimination half-life of theophylline, a simple linear regression (Ordinary Least Squares) model was used. All data processing, subsetting, and statistical analyses were conducted in RStudio. The threshold for statistical significance was set at $\alpha$ = 0.05.
 
@@ -43,7 +43,16 @@ knitr::include_graphics(here::here("figs", "weightvshalflife.png"))
 
 # Discussion
 
-Talk about why half-life of theophylline does not depend on patient weight and what it depends on instead.
+Based on the analysis, I fail to reject the null hypothesis that there is no linear relationship between a patient's total body mass (kg) and their theophylline elimination half-life ($p$ = 0.404, $R^2$ = 0.07). The average elimination half-life of theophylline in healthy, non-smoking adults is around 8 hours [@journey2026]. However, individual variability in theophylline half-life ranges from 3-4 hours to more than 24 hours in patients with liver disease, heart failure, or severe viral illness [@hendeles1980]. Despite great individual variability in the half-life of theophylline, I can conclude that patient total body mass (kg) is a poor and unreliable predictor of how fast theophylline is eliminated from a patient's system and should not be used as a proxy to calculate maintenance dosages (Figure \@ref(fig:figure-1)).
+
+This finding can be explained by evidence that theophylline is a hydrophilic/water-soluble drug, which means theophylline will distribute into lean body mass and extracullular fluid rather than fatty tissues [@cheymol2000]. Therefore, using total body mass to predict half-life is not recommended, as it will introduce noise by including the mass of fatty tissue. Therefore, a high total body mass due to higher fatty tissue content does not necessarily display differences in half-life for that reason alone.
+
+Additional metabolic evidence can explain why total body mass is a poor predictor of theophylline half-life. Theophylline is heavily metabolized by liver enzymes, namely cytochrome P450 [@barnes2010; @hendeles1980; @journey2026]. Factors that interact with this enzyme, like smoking, age, heart failure, and liver dysfunction, are known to greatly affect the half-life of theophylline [@hendeles1980].
+
+Since theophylline is not readily distributed into fatty tissue and fatty tissue percent does not directly affect cytochrome P450 or liver metabolism, it is a poor predictor of elimination half-life. The Theoph dataset only provides variables relating to total body weight, dose administered, and serum concentrations at different time points after administration; therefore, the dataset lacked variables for lean body mass, smoking status, and heart or liver conditions that may have contributed to the individual variability in half-life (Figure \@ref(fig:figure-1)).
+
+Relying on total body mass for theophylline dosing is dangerous due to its narrow therapeutic index [@hendeles1980; @journey2026]. Future models and datasets reporting pharmacokinetic meansures are recommended to include as much information as possible to accurately predict elimination half-life and prevent toxicity. 
+
 
 # Data Availability and Reproducibility
 
