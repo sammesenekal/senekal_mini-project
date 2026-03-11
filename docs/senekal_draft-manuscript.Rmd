@@ -2,9 +2,12 @@
 title: "Total Body Weight is Not a Significant Predictor of Theophylline Elimination Half-Life: A Retrospective Analysis"
 author: "Samme Senekal"
 date: "2026-02-06"
-output: bookdown::pdf_document2
-toc: false
-number_sections: false
+output: 
+  bookdown::pdf_document2:
+    toc: false
+    number_sections: false
+header-includes:
+  - \usepackage[labelfont=bf]{caption}
 bibliography: references.bib
 csl: apa.csl
 ---
