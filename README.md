@@ -6,7 +6,7 @@ Code and data for my *Mini-project* assignment for BIOL_530H (Scientific Reprodu
 
 By Samme Senekal
 
-All analytical results can be reproduced using the code and data in this repository. Feel free to contact Samme Senekal by [samme.senekal@ubc.ca](mailto:samme.senekal@ubc.ca){.email} if you have any questions.
+All analytical results can be reproduced using the code and data in this repository. Feel free to contact Samme Senekal by [samme.senekal\@ubc.ca](mailto:samme.senekal@ubc.ca){.email} if you have any questions.
 
 **Abstract**
 
@@ -16,15 +16,15 @@ Write the abstract for your mini-project here!
 
 -   Raw and processed data can be found in the 'data' folder with a data dictionary
 
-    - Please consult the data dictionary for definitions of processed/calculated variables.
-    - 'data_processed' contains data files that have been subset or values that have been calculated from subset data
-    - 'data_raw' contains the raw Theoph dataset. Please do not make changes to this data set or if needed, create a copy before making changes.
+    -   Please consult the data dictionary for definitions of processed/calculated variables.
+    -   'data_processed' contains data files that have been subset or values that have been calculated from subset data
+    -   'data_raw' contains the raw Theoph dataset. Please do not make changes to this data set or if needed, create a copy before making changes.
 
 -   The manuscript, references, data management plan, and pre-registration can be found in the 'docs' folder
 
 -   All scripts responsible for producing figures and processed data sets can be found in the 'scripts' folder
 
-    - Scripts are annotated for ease of use.
+    -   Scripts are annotated for ease of use.
 
 -   All figures (.png) can be found in 'figs' folder
 
