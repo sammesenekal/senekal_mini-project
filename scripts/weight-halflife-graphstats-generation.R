@@ -5,6 +5,8 @@ library(here)
 library(tidyverse)
 library(tidyr)
 library(dplyr)
+library(broom)
+library(knitr)
 
 ##Read in the dataset:
 
@@ -29,6 +31,19 @@ print(wt_hl_plot)
 stat_model <- lm(Half_Life~Wt, data = theoph_wthf)
 
 summary(stat_model)
+
+##Clean up/tidy the output into a table with the Broom package
+
+tidy_table <- tidy(stat_model)
+
+##Change the row names
+
+tidy_table$term <- c("Intercept", "Total Body Weight (kg)")
+
+kable(tidy_table, 
+      digits = 3, 
+      col.names = c("Predictor", "Estimate", "Std. Error", "t-value", "p-value"),
+      caption = "Linear regression predicting theophylline elimination half-life from total body weight.")
 
 #p-value = 0.4041 -- NOT statistically significant! Greater than 0.05
 #Regression line equation: y = mx + B; Half-life = 0.061(Weight) + 3.996

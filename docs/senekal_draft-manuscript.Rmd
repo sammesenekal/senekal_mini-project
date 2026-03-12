@@ -14,6 +14,10 @@ csl: apa.csl
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+#Packages
+library(broom)
+library(knitr)
+library(here)
 ```
 
 # Introduction
@@ -34,12 +38,45 @@ To test the hypothesis that patient body weight correlates with elimination half
 
 # Results
 
-The calculated theophylline elimination half-lives for the 12 subjects ranged from 6.16 to 14.3 hours, with baseline body weights ranging from 54.6 to 86.4 kg. A simple linear regression was conducted to determine if total body weight is a significant predictor of theophylline elimination half-life (Figure \@ref(fig:figure-1)). The model indicated that body weight did not significantly predict half-life ($p$ = 0.404), explaining only a negligible proportion of the variance in clearance rates ($R^2$ = 0.07). The absence of a significant linear relationship between the two variables is illustrated in Figure \@ref(fig:figure-1).
+The calculated theophylline elimination half-lives for the 12 subjects ranged from 6.16 to 14.3 hours, with baseline body weights ranging from 54.6 to 86.4 kg. A simple linear regression was conducted to determine if total body weight is a significant predictor of theophylline elimination half-life (Figure \@ref(fig:figure-1)). The model indicated that body weight did not significantly predict half-life ($p$ = 0.404), explaining only a negligible proportion of the variance in clearance rates ($R^2$ = 0.07) (Table 1). The absence of a significant linear relationship between the two variables is illustrated in Figure \@ref(fig:figure-1).
 
 ```{r figure-1, echo=FALSE, fig.cap="Relationship between total body weight (kg) and calculated theophylline elimination half-life (hours) in $N$ = 12 subjects following a single oral dose. The blue dashed line represents the line of best fit (y = 0.061x + 3.996; $R^2$ = 0.07), highlighting the lack of a significant linear relationship ($p$ = 0.404)."}
 knitr::include_graphics(here::here("figs", "weightvshalflife.png"))
 
 ```
+
+```{r stats, echo=FALSE}
+
+#Read in the dataset
+
+theoph_wthf <- read.csv(here::here("data", "data_processed","Theoph_wthl.csv"))
+
+#We need a test to show if this trend line is statistically significant
+##Simple Linear Regression--this will predict if weight significantly predicts Half-life
+
+stat_model <- lm(Half_Life~Wt, data = theoph_wthf)
+
+##Clean up/tidy the output into a table with the Broom package
+
+tidy_table <- tidy(stat_model)
+
+##Change the row names
+
+tidy_table$term <- c("Intercept", "Total Body Weight (kg)")
+
+```
+
+\newpage
+
+```{r table-1, echo=FALSE, tab.cap="Statistical summary of Ordinary Least Squares regression."}
+
+kable(tidy_table,
+      digits = 3,
+      col.names = c("Predictor", "Estimate", "Std. Error", "t-value", "p-value"),
+      caption = "Linear regression predicting theophylline elimination half-life from total body weight.")
+
+```
+
 
 # Discussion
 
