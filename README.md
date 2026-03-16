@@ -16,7 +16,7 @@ Write the abstract for your mini-project here!
 
 -   Raw and processed data can be found in the 'data' folder with a data dictionary
 
-    -   Please consult the data dictionary for definitions of processed/calculated variables.
+    -   Please consult the data dictionaries in each data directory for definitions of variables.
     -   'data_processed' contains data files that have been subset or values that have been calculated from subset data
     -   'data_raw' contains the raw Theoph dataset. Please do not make changes to this data set or if needed, create a copy before making changes.
 
@@ -36,7 +36,8 @@ Write the abstract for your mini-project here!
 
 **Citation/Sharing and Access Information**
 
-This is where you would put the citation information for your manuscript.
+Senekal, S. J. (2026). Total Body Weight is Not a Significant Predictor of Theophylline Elimination Half-Life: A Retrospective Analysis. $Mock Journal Name$. https://fakedoi.org/01.10020/1234567
+
 
 **Acknowledgements**
 
