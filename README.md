@@ -6,7 +6,7 @@ Code and data for my *Mini-project* assignment for BIOL_530H (Scientific Reprodu
 
 By Samme Senekal
 
-All analytical results can be reproduced using the code and data in this repository. Feel free to contact Samme Senekal by [samme.senekal\@ubc.ca](mailto:samme.senekal@ubc.ca){.email} if you have any questions.
+All analytical results can be reproduced using the code and data in this repository. Feel free to contact Samme Senekal by [samme.senekal\@ubc.ca](mailto:samme.senekal@ubc.ca) if you have any questions.
 
 **Abstract**
 
