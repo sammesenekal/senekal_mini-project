@@ -6,6 +6,8 @@ Code and data for my *Mini-project* assignment for BIOL_530H (Scientific Reprodu
 
 By Samme Senekal
 
+This project is archived at https://fakedoi.org/10.123/12345 on OSF.
+
 All analytical results can be reproduced using the code and data in this repository. Feel free to contact Samme Senekal by [samme.senekal\@ubc.ca](mailto:samme.senekal@ubc.ca) if you have any questions.
 
 **Abstract**
