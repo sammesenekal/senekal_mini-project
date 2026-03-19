@@ -34,7 +34,9 @@ Write the abstract for your mini-project here!
 
 -   R version 4.5.2
 
--   tidyverse, tinytex, dplyr, ggplot2, readr, tidyr, here
+-   I made use of tidyverse package. Please be warned there are lots of packages in the renv folder upon initialization. Thank you!
+
+-   For all packages and versions please see the renv.lock file.
 
 **Citation/Sharing and Access Information**
 
