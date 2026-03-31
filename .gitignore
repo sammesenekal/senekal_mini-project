@@ -11,7 +11,7 @@
 .Ruserdata
 
 # R profile
-.Rprofile
+#.Rprofile
 
 # Example code in package build process
 *-Ex.R

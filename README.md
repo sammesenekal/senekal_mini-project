@@ -12,7 +12,7 @@ All analytical results can be reproduced using the code and data in this reposit
 
 **Abstract**
 
-Write the abstract for your mini-project here!
+Theophylline is a bronchodilator with a narrow therapeutic index, and its clearance is highly variable between individuals. Consequently, ensuring the proper loading and maintenance doses is essential to reduce common and severe side effects. Half-life measurements are a crucial pharmacological metric that aids physicians in correctly administering pharmaceuticals with such narrow indexes like Theophylline. While the metabolic factors affecting theophylline clearance from the body are known, little work has been done to determine the effect patient total body weight has on the elimination half-life. Therefore, the goal of this retrospective analysis is to determine if total body weight is a significant predictor of the elimination half-life of theophylline. Using the publicly available Theoph dataset ($N=12$), elimination half-lives were derived from log-transformed concentration-time curves. A simple linear regression revealed that total body weight did not significantly predict half life ($p=0.404$, $R^2=0.07$). As a result, total body weight is an unreliable metric for predicting theophylline clearance or guiding maintenance dosing. The lack of correlation is likely due to the drug’s distribution primarily into lean mass and its highly variable hepatic metabolism via cytochrome P450 enzymes.
 
 **Directory/Data and File overview**
 
